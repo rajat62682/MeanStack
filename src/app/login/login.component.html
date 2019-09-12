@@ -1,0 +1,32 @@
+<body class="login-body">
+  <mat-card>
+
+    <mat-card-title class="text-center white">
+      <div><img src="../assets/appLogo.png" width=60px /></div> Global Data Reports<br>
+    </mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <mat-form-field color="secondary" class="example-full-width white">
+          <input type="text" matInput ngModel name="username">
+          <mat-placeholder class="white">Username</mat-placeholder>
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="example-full-width white">
+          <input type="password" matInput ngModel class="white" name="password">
+          <mat-placeholder class="white">Password</mat-placeholder>
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+        <div>
+          <button *ngIf="!loginClicked" class="center" mat-raised-button type="submit">Login</button>
+        </div>
+        <div class="text-center"><img *ngIf="loginClicked" src="../assets/earth.gif" width=80px /></div>
+        <br>
+        <div style="color: white" class="text-center" *ngIf="error">
+          Please Enter Valid UserId Password
+        </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+</body>

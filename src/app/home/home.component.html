@@ -1,0 +1,16 @@
+<body>
+<app-header (logoutClicked)='logoutOperation($event)'></app-header>
+
+<div>
+  <mat-tab-group (selectedTabChange)='changeRegion($event)' *ngIf="!logoutLoader">
+    <mat-tab class="font-class" *ngFor="let region of regionArr" label="{{region| titlecase}}">
+      <app-region *ngIf="region===selectedRegion" [region]="selectedRegion"></app-region>
+    </mat-tab>
+  </mat-tab-group>
+  <div class="row" *ngIf="logoutLoader">
+    <div class="col-sm-12 text-center logoutLoader">
+      <h2 class="text-center">See Ya Later !</h2><img src="../assets/earthLoader.gif" width=220px />
+    </div>
+  </div>
+</div>
+</body>

@@ -1,0 +1,8 @@
+{
+  "/api/*": {
+    "target": "https://restcountries-v1.p.rapidapi.com",
+    "secure": true,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}
