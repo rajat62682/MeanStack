@@ -10,31 +10,29 @@ import { resolve } from 'url';
 })
 export class HeaderComponent implements OnInit {
   @Output() logoutClicked = new EventEmitter();
-   loginStatus=false;
-  constructor(private loginService:LoginService,private router:Router,private activeR:ActivatedRoute) { }
+  loginStatus = false;
+  constructor(private loginService: LoginService, private router: Router, private activeR: ActivatedRoute) { }
 
   ngOnInit() {
-           this.router.events.subscribe((event)=>{
-             if(event instanceof NavigationEnd )
-             {
-               if(event.url.indexOf('home')>-1)
-               {
-                 this.loginStatus=true;
-               }
-               else {
-                 this.loginStatus=false;
-               }
-             }
-           })
+    // this.router.events.subscribe((event) => {
+    //   if (event instanceof NavigationEnd) {
+    //     if (event.url.indexOf('home') > -1) {
+    //       this.loginStatus = true;
+    //     }
+    //     else {
+    //       this.loginStatus = false;
+    //     }
+    //   }
+    // })
   }
-  logout(){
+  logout() {
     this.loginService.logout();
     this.logoutClicked.emit(true);
-    setTimeout(()=>{
-     this.router.navigate(['/']);
-     localStorage.removeItem("user");
-    },3500)
-   
+    setTimeout(() => {
+      this.router.navigate(['/']);
+      localStorage.removeItem("user");
+    }, 3500)
+
   }
- 
+
 }

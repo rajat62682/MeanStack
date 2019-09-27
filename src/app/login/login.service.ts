@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ username="admin";
 password="admin";
 loggedIn=false;
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   isAuthenticated() {
     const promise = new Promise(
@@ -23,24 +24,20 @@ loggedIn=false;
           else {
             resolve(false);
           }
-        }, 2200);
+        }, 200);
       }
     );
     return promise;
   }
 
 
-  setLogin(username,password){
-    if(username===this.username && password===this.password){
-     this.loggedIn=true;
-     localStorage.setItem("user","admin")
-    }
-    else {
-      this.loggedIn=false;
-    }
+  checkLogin(user){
+    return this.http.post("/api/login",user);
   }
   logout(){
+
     this.loggedIn=false;
+    this.http.get("/api/logout");
   }
 
 

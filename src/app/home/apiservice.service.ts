@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiserviceService {
+export class Apiservice {
  
 
   constructor(private http:HttpClient) { }
@@ -21,6 +21,6 @@ getRegionData(region: string) {
   let headers = new HttpHeaders().set('x-rapidapi-host', 'restcountries-v1.p.rapidapi.com')
                              .set('x-rapidapi-key', '86076ac0abmsh94aee182e751710p1981efjsn672cddd9192f');
  return this.http.get("https://restcountries-v1.p.rapidapi.com/region/"+region,{headers:headers});
-}
+ }
 
 }

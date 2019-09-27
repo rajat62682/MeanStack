@@ -7,8 +7,9 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import am4themes_kelly from "@amcharts/amcharts4/themes/kelly";
-import { ApiserviceService } from '../apiservice.service';
+import { Apiservice } from '../apiservice.service';
 import { timeout } from 'q';
+import { GlobalReportsService } from 'src/app/services/global-reports.service';
 
 am4core.useTheme(am4themes_kelly);
 am4core.useTheme(am4themes_animated);
@@ -28,30 +29,31 @@ export class RegionComponent implements OnInit {
   displayedColumns: string[] = ['name', 'capital', 'population', 'area'];
   private chartCountry: am4charts.XYChart;
   private chartRegion: am4charts.XYChart;
-  constructor(private zone: NgZone,private apiService:ApiserviceService) { }
+  constructor(private zone: NgZone,private apiService:Apiservice,private globalReportService:GlobalReportsService) { }
   ngOnInit() {
    
   }
-  processRegionData(data){
+  processRegionData(data:any){
     this.loadCards=false;
     var that=this;
-    var totalRegionPopulation=0;
-    this.totalArea=0
-    _.each(data,(value)=>{
-    totalRegionPopulation+=value.population;
-    that.totalArea+=value.area;
+    //this.totalArea=0
+    _.each(data.regionData,(value)=>{
+    //totalRegionPopulation+=value.population;
+    //that.totalArea+=value.area;
     
-    that.regionData.push(new Country(value.name,value.capital,value.subregion,value.population,value.area,value.languages,value.currencies,value.timezones,value.alpha2Code));
+    that.regionData.push(new Country(value.country,value.capital,value.subregion,value.population,value.area,value.languages,value.currencies,value.timezones,value.countryCode));
     })
     this.loadCards=true;
     console.log( this.regionData[0]);
-    this.totalRegionPopulationToArea=totalRegionPopulation/this.totalArea;
+    this.totalArea=data.totalarea;
+    this.totalRegionPopulationToArea=data.populationToArea;
     this.displayCountry=this.regionData[0];
     this.selectedCountry=this.regionData[0].name;
   } 
   ngAfterViewInit() {
-    this.apiService.getRegionData(this.region).subscribe((response)=>{
-      this.processRegionData(response);
+    this.globalReportService.getGlobalDataByRegion(this.region).subscribe((response:any)=>{
+      console.log(response.data);
+      this.processRegionData(response.data);
 setTimeout(()=>{
   this.populateCountryChart(this.totalRegionPopulationToArea, this.displayCountry, this.selectedCountry);
   this.populateRegionChart();
@@ -62,11 +64,15 @@ setTimeout(()=>{
   changeTab(selectedCountry) {
  
    // this.selectedCountry = selectedCountry;
-    this.apiService.getRegionData(this.region).subscribe((response)=>{
-      this.processRegionData(response);
-      this.populateCountryChart(this.totalRegionPopulationToArea, this.displayCountry, selectedCountry);
-   })
+   this.globalReportService.getGlobalDataByRegion(this.region).subscribe((response:any)=>{
+    console.log(response.data);
+    this.processRegionData(response.data);
+setTimeout(()=>{
+this.populateCountryChart(this.totalRegionPopulationToArea, this.displayCountry, this.selectedCountry);
+this.populateRegionChart();
+},100)
    
+ }) 
 
   }
   populateCountryChart(totalRegionPopulationToArea, selected: Country, name) {

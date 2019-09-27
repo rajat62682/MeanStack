@@ -20,7 +20,7 @@ module.exports.collectGlobalReports = function () {
                     population: data.population,
                     currencies: data.currencies,
                     timezones: data.timezones,
-                    countryCode: data.countryCode
+                    countryCode: data.alpha2Code
                 }));
             })
             mongodb.connect(url, { useNewUrlParser: true });
@@ -36,13 +36,14 @@ module.exports.collectGlobalReports = function () {
                     }
                     else {
                         console.log(inserted.length);
-                        db.close();
+                    
                         resolve("Success");
                     }
                 })
+            
             })
         }, function (reason) {
-            db.close();
+            
             reject(reason);
         })
     })
@@ -62,11 +63,14 @@ module.exports.getRegionData = function (region) {
                 else {
                    var totalPopulation= _.sumBy(response,function(value){return value.population});
                    var totalArea= _.sumBy(response,function(value){return value.area});
-                    resolve({regionData:response,populationToArea:totalPopulation/totalArea});
+                    resolve({regionData:response,populationToArea:totalPopulation/totalArea,totalarea:totalArea});
                 }
+            }).then(()=>{
+                db.close();
             });
+            
         })
-
+   
     });
 }
 function capitalizeFirstLetter(string) {

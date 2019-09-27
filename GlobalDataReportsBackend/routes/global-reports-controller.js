@@ -3,7 +3,7 @@ var router = express.Router();
 var globalReportService = require('../services/global-report-service');
 
 
-router.post('/collectRegionData', function (req, res) {
+router.get('/collectRegionData', function (req, res) {
     res.setHeader("Content-type", "application/json");
     globalReportService.collectGlobalReports().then(function (value) {
         console.log(value);
@@ -15,6 +15,7 @@ router.post('/collectRegionData', function (req, res) {
 
 });
 router.get("/getRegionData", function (req, res) {
+    console.log(req.session.username);
     globalReportService.getRegionData(req.query.region).then(function(value){
         res.status(200).json({success:true,message:"Successfully found region data",data:value});
     },function(error){
