@@ -1,0 +1,67 @@
+table {
+    width: 100%;
+    cursor: pointer;
+  }
+  .example-container {
+    height: 400px;
+    overflow: auto;
+  }
+  table tr.highlight {
+    background-color: #6eb79d87 !important;
+    color: #ffffff;
+}
+
+.mat-header-cell {
+  color: #556358;
+  font-size: 14px;
+    font-weight: 600;
+}
+.mat-cell {
+  color: #3c6145;
+  font-size: 14px;
+}
+
+.mat-card{
+  font-family: 'Josefin Sans', sans-serif;
+  color: #4c7155;
+}
+.mat-table{
+  font-family: 'Josefin Sans', sans-serif!important;
+}
+.tabRowGroup{
+  display: table-row-group;
+}
+.matCardFirst{
+  margin: 1%;
+  box-shadow: 1px 3px 13px #416d5d
+}
+.matCardSecond{
+  margin: 0% 1% 0% 1%;
+  box-shadow: 1px 3px 13px #416d5d
+}
+#style-4::-webkit-scrollbar
+{
+    width: 6px;
+    height: 6px;
+    background-color: #ddd;
+  
+}
+
+#style-4::-webkit-scrollbar-thumb
+{
+    background-color: #416D5D;
+   
+}
+body::-webkit-scrollbar
+{
+    width: 8px;
+    height: 8px;
+    background-color: #ddd;
+  
+}
+
+body::-webkit-scrollbar-thumb
+{
+    background-color: #416D5D;
+   
+}

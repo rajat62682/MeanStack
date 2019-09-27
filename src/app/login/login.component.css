@@ -1,0 +1,72 @@
+.login-body {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    min-width: 100%;
+    background-image: url("../../assets/LoginBackground.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    opacity:1;
+    background-position: center;
+    background-size: cover;
+    }
+
+     .example-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+      }
+      
+      .example-full-width {
+        width: 100%;
+      } 
+
+      .mat-card{
+        background: #00000061;
+        width: fit-content;
+        margin: 218px 522px
+      }
+      .white{
+          color: white;
+      }
+      .title{
+      
+        margin-left: 25%;
+      }
+    .smallwidth{
+        width: 20px;
+        height:10px;
+    }
+      
+    mat-spinner {
+        zoom: 0.2
+      }
+      .center{
+      margin: 0 auto;
+      display: block;
+      }
+     
+      input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 0px solid white;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+.mat-card{
+  font-family: 'Josefin Sans', sans-serif;
+}
+.mat-raised-button{
+  background-color: #1B353B!important;
+  color:#fff!important;
+  font-weight: 200;
+  font-size: 1.0em!important;
+  font-family: 'Josefin Sans', sans-serif;
+}

@@ -1,0 +1,19 @@
+
+ 
+ .font-class{
+  font-family: 'Josefin Sans', sans-serif!important;
+ }
+ .mat-tab-label, .mat-tab-link {
+  font-family: 'Josefin Sans', sans-serif!important;
+ }
+ .mat-tab-label .mat-tab-label-content{
+  color:#4c7155!important;
+}
+.logoutLoader{
+    font-family: 'Josefin Sans', sans-serif;
+    color: #4c7155;
+     margin-top:10%;
+}
+body{
+  overflow-x: hidden;
+}

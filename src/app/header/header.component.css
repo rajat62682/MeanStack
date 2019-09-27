@@ -1,0 +1,23 @@
+.navbar-dark .navbar-nav .nav-link {
+    color: #f8f9fa;
+}
+.mat-icon{
+    font-size: 35px;
+}
+.example-icon {
+    padding: 0 14px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  .mat-raised-button{
+    background-color: #1B353B!important;
+    color:#fff!important;
+    font-weight: 600;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+  .mat-toolbar-row{
+    font-family: 'Josefin Sans', sans-serif;
+  }
+ 
